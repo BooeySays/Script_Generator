@@ -1,0 +1,41 @@
+#!/bin/bash
+
+# Date: 2019-01-12
+# File: newsh
+# Desc:	Script that will create a bash script from 
+#	a template, and automatically adding the 
+#	#!/bin/bash  line to the file, as well as
+#	these description here.
+# Func: newsh FILENAME
+# Expl: Example - newsh ~/Downloads/downloader.sh
+
+__version__='1.2'
+if [ $# == "0" ]; then
+	echo -e "New Bash Script Creator v1.2\nUsage: \033[01;32m$ \033[37mnewsh \033[33m[NEW FILE NAME]\033[m\nExample:\n\t\tnewsh ~/MyBashScripts/newscripts.sh\n\n";
+elif [ $1 == '--help' ]; then
+	clear;
+	echo "HELP SCREEN TO GO HERE";
+elif [ $1 == '-c' ]; then
+	fileNAME="$2"
+	touch "$fileNAME";
+	echo -e "#!/bin/bash\n\n" >> "$fileNAME";
+	chmod +x "$fileNAME";
+	nano $fileNAME;
+	unset fileNAME;
+else 
+	fileNAME="$1"
+	touch $fileNAME;
+	echo -e "#!/bin/bash\n\n" >> "$fileNAME";
+	nano $fileNAME;
+	unset fileNAME;
+fi
+
+#CHANGES:
+#1.2
+#	- added "__version__"
+#
+#TO DO:
+#	- add version option
+#	- change -c to --chmod
+#	- change nano line to 'nano +3,1'
+
